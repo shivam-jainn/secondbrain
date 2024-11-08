@@ -38,19 +38,11 @@ export const authOptions: NextAuthOptions = {
           },
         });
         
-        if (user) {
-          token.isOrganisation = Boolean(dbUser?.isOrganisation);
-          token.username = dbUser?.username as string;
-        }
         return token;
 
        
       },
       async session({session,token}){
-        if (token && session.user) {
-          session.user.username = token.username;
-          session.user.isOrganisation = token.isOrganisation;
-        }
         return session;
       }
     }
