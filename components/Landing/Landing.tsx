@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Landing: React.FC = () => {
   const duckRef = useRef<HTMLDivElement | null>(null);
   const [, setShowButton] = useState(true);
   const radius = 200;
   const initialTransform = 'translate(-50%, -50%) rotate(-10deg)';
+  const router = useRouter();
 
   const scrollToSection = () => {
     const section = document.getElementById('whyus');
@@ -63,14 +65,23 @@ const Landing: React.FC = () => {
           </div>
           <div
             ref={duckRef}
-            className="bg-[url('/smortduck.png')] bg-contain bg-center bg-no-repeat absolute top-[70%] left-1/2 transform translate-x-[-50%] translate-y-[-50%] rotate-[-10deg] w-[15vw] h-[15vw] min-w-[200px] min-h-[200px] pointer-events-none transition-transform duration-200 ease z-10"
+            className="bg-[url('/smortduck.png')] bg-contain bg-center bg-no-repeat absolute top-[80%] left-1/2 transform translate-x-[-50%] translate-y-[-50%] rotate-[-10deg] w-[15vw] h-[15vw] min-w-[200px] min-h-[200px] pointer-events-none transition-transform duration-200 ease z-10"
           />
           <div className="text-white text-[6vw] font-bold text-center z-20">
-            Your rubber duck for interview prep
+            Your rubber duck for scoring 100
           </div>
         </div>
 
-        <div className="h-[40vh] flex justify-center items-center">
+        <div className="h-[40vh] flex gap-4 justify-center items-center">
+
+        <button
+            onClick={()=>{router.push('/login')}}
+            className="min-w-[120px] bg-white border-none rounded-full cursor-pointer text-black font-bold py-4 z-30"
+            type="button"
+          >
+            Start Learning
+          </button>
+        
           <button
             onClick={scrollToSection}
             className="min-w-[120px] bg-white border-none rounded-full cursor-pointer text-black font-bold py-4 z-30"
